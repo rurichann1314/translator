@@ -23,13 +23,6 @@ import androidx.compose.ui.unit.sp
 import lingo.core.model.Language
 import lingo.ui.state.TranslationStatus
 import lingo.ui.theme.LingoColors
-
-/**
- * 译文卡片，按空/加载中/成功/失败四种状态分别排版。
- *
- * 失败时会把每条通道的失败原因都列出来，
- * 便于定位是网络问题还是接口变更。
- */
 @Composable
 fun ResultCard(
     target: Language,
@@ -81,7 +74,7 @@ fun ResultCard(
                         strokeWidth = 2.dp,
                     )
                     Text(
-                        text = "正在联系翻译引擎…",
+                        text = "コアに接続中…",
                         style = MaterialTheme.typography.bodyMedium,
                         color = LingoColors.TextSecondary,
                     )

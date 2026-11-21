@@ -12,13 +12,6 @@ import androidx.compose.ui.layout.ContentScale
 import lingo.generated.resources.Res
 import lingo.generated.resources.miku
 import org.jetbrains.compose.resources.painterResource
-
-/**
- * 页面背景：铺满一张图，再叠一层渐变蒙版压低亮度。
- *
- * 图片本身信息量较大，直接当背景会让卡片上的文字失去对比度，
- * 所以图片整体降低不透明度，蒙版上下更暗、中间稍透，保证中间区域能看出画面。
- */
 @Composable
 fun AppBackground() {
     Box(Modifier.fillMaxSize()) {

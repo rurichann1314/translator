@@ -11,13 +11,6 @@ import kotlinx.serialization.json.jsonPrimitive
 import lingo.core.error.TranslationException
 import lingo.core.model.Language
 import lingo.core.model.TranslationResult
-
-/**
- * MyMemory 通道（translated.net 提供的免费 API），
- *
- * 作为微软通道不可用时的备用通道。
- * 单次请求有长度限制，这里会自动按句子切段后再拼接结果。
- */
 class MyMemoryTranslator(
     private val httpClient: HttpClient,
     private val json: Json = DEFAULT_JSON,
@@ -93,11 +86,6 @@ class MyMemoryTranslator(
             )?.takeIf { !it.isAuto },
         )
     }
-
-    /**
-     * 按句号/换行切成不超过 [limit] 的片段。
-     * 超长片段按长度直接切分。
-     */
     private fun splitByLimit(text: String, limit: Int): List<String> {
         if (text.length <= limit) return listOf(text)
 
@@ -133,15 +121,9 @@ class MyMemoryTranslator(
     )
 
     companion object {
-        const val PROVIDER_NAME: String = "MyMemory"
-
-        /**
-         * langpair 的写法为「源语言|目标语言」，
-         * 例如 en|zh-CN。
-         */
+        const val PROVIDER_NAME: String = "出品"
         const val ENDPOINT: String = "https://api.mymemory.translated.net/get"
 
-        /** 官方限制 500 字符，留点余量 */
         private const val MAX_CHUNK_LENGTH = 450
 
         private val DEFAULT_JSON = Json {

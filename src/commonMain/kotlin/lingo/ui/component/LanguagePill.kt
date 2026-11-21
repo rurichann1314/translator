@@ -27,10 +27,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import lingo.core.model.Language
 import lingo.ui.theme.LingoColors
-
-/**
- * 语言选择药丸：点击展开下拉，选项显示本地写法与中文名。
- */
 @Composable
 fun LanguagePill(
     language: Language,

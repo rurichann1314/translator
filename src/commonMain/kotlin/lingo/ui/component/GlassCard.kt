@@ -15,11 +15,6 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import lingo.ui.theme.LingoColors
-
-/**
- * 半透明玻璃质感容器。
- * 圆角 + 渐变填充 + 1dp 描边。
- */
 @Composable
 fun GlassCard(
     modifier: Modifier = Modifier,

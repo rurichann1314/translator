@@ -19,11 +19,6 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import lingo.ui.theme.LingoColors
-
-/**
- * 主操作按钮：渐变底 + 按压禁用态 + 加载转圈。
- * 整块可点击，作为页面主操作按钮。
- */
 @Composable
 fun TranslateButton(
     loading: Boolean,

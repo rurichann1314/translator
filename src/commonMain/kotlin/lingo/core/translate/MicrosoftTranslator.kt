@@ -15,17 +15,6 @@ import lingo.core.error.TranslationException
 import lingo.core.model.Language
 import lingo.core.model.TranslationResult
 import lingo.core.translate.dto.MicrosoftTranslateDto
-
-/**
- * 微软翻译免费通道（Edge 浏览器内置翻译的底层引擎）。
- *
- * 该接口无需注册账号，直接 POST 一个 JSON 字符串数组即可。
- * 旧版 edge.microsoft.com/translate/auth 取临时 token 的写法
- * 已退役（返回 404），当前版本不需要 token。
- *
- * 响应头包含 Access-Control-Allow-Origin: *，
- * 浏览器中的 WASM 可直接调用，无需自建后端。
- */
 class MicrosoftTranslator(
     private val httpClient: HttpClient,
     private val json: Json = DEFAULT_JSON,
@@ -39,7 +28,6 @@ class MicrosoftTranslator(
 
         val url = buildString {
             append(ENDPOINT)
-            // 自动检测时 from 传空字符串；传 "auto" 接口会直接 400
             append("?from=").append(source.microsoftCode.encodeURLParameter())
             append("&to=").append(target.microsoftCode.encodeURLParameter())
             append("&isEnterpriseClient=false")
@@ -81,11 +69,8 @@ class MicrosoftTranslator(
             providerName = name,
         )
     }
-
     companion object {
-        const val PROVIDER_NAME: String = "微软翻译"
-
-        /** 微软的免费翻译端点（原 token 端点已退役） */
+        const val PROVIDER_NAME: String = "Microsoft Service"
         const val ENDPOINT: String = "https://edge.microsoft.com/translate/translatetext"
 
         private val DEFAULT_JSON = Json {

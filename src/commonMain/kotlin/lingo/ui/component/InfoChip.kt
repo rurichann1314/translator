@@ -18,8 +18,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import lingo.ui.theme.LingoColors
-
-/** 小圆角标签：用来显示"通道名""耗时""检测到的语言"这类附注信息 */
 @Composable
 fun InfoChip(
     text: String,

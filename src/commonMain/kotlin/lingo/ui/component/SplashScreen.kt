@@ -13,8 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.unit.dp
 import lingo.ui.theme.LingoColors
-
-/** 字体加载期间的启动画面：渐变背景 + 转圈，不绘制文字。 */
 @Composable
 fun SplashScreen() {
     Box(

@@ -22,11 +22,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import lingo.ui.theme.LingoColors
-
-/**
- * 页头：左侧渐变 Logo，中间标题与副标题，右侧通道说明。
- * 窄屏时 [compact] 为 true，隐藏通道标签，避免换行。
- */
 @Composable
 fun AppHeader(
     providerNames: List<String>,
@@ -78,7 +73,7 @@ fun AppHeader(
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 providerNames.forEachIndexed { index, providerName ->
                     InfoChip(
-                        text = if (index == 0) "$providerName 优先" else "$providerName 兜底",
+                        text = if (index == 0) "$providerName driven" else "$providerName by rurichann",
                         accent = if (index == 0) LingoColors.Success else LingoColors.Warning,
                     )
                 }

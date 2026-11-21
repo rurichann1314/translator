@@ -21,11 +21,6 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import lingo.ui.theme.LingoColors
-
-/**
- * 交换按钮：点击后箭头旋转半圈并对调语言。
- * 箭头用 Canvas 绘制，不引入图标库依赖。
- */
 @Composable
 fun SwapButton(
     onClick: () -> Unit,
