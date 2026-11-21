@@ -1,0 +1,26 @@
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Kotlin
+.kotlin/
+
+# 本机路径，不要提交
+local.properties
+
+# 本地验证用的临时产物（tools/ 里的脚本会生成）
+web-test/
+*.log
+shot-*.png
+
+# 系统
+.DS_Store
+Thumbs.db
