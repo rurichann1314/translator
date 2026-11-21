@@ -27,13 +27,6 @@ import lingo.ui.component.SwapButton
 import lingo.ui.component.TranslateButton
 import lingo.ui.state.TranslatorStore
 import lingo.ui.theme.LingoColors
-
-/**
- * 主页：宽屏左右排布，窄屏上下堆叠。
- *
- * 只负责布局与尺寸，业务状态全部来自 [TranslatorStore]。
- * 组件本身无状态。
- */
 @Composable
 fun TranslatorScreen(store: TranslatorStore) {
     BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
@@ -75,6 +68,7 @@ fun TranslatorScreen(store: TranslatorStore) {
                             onTextChange = store::updateSourceText,
                             onLanguageSelected = store::selectSourceLanguage,
                             onClear = store::clear,
+                            onSubmit = store::translate,
                             modifier = Modifier.weight(1f),
                         )
                         SwapButton(onClick = store::swapLanguages)
@@ -96,6 +90,7 @@ fun TranslatorScreen(store: TranslatorStore) {
                             onTextChange = store::updateSourceText,
                             onLanguageSelected = store::selectSourceLanguage,
                             onClear = store::clear,
+                            onSubmit = store::translate,
                             modifier = Modifier.fillMaxWidth(),
                         )
                         Row(
@@ -130,7 +125,7 @@ fun TranslatorScreen(store: TranslatorStore) {
                 Spacer(Modifier.height(14.dp))
 
                 Text(
-                    text = "微软翻译免费接口 · 失败自动切换 MyMemory · 全部在你的浏览器里跑，没有后端",
+                    text = "The translator for itstudio APP department.",
                     style = MaterialTheme.typography.labelSmall,
                     color = LingoColors.TextMuted,
                     textAlign = TextAlign.Center,

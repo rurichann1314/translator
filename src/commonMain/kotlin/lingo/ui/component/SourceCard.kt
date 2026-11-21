@@ -18,6 +18,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.KeyEventType
+import androidx.compose.ui.input.key.isShiftPressed
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onPreviewKeyEvent
+import androidx.compose.ui.input.key.type
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -26,7 +32,9 @@ import lingo.core.model.Language
 import lingo.ui.theme.LingoColors
 
 /**
- * 原文输入卡片：语言药丸 + 多行输入框 + 字数/检测提示。
+ * 原文输入卡片：语言选择、多行输入框、字数与检测提示。
+ *
+ * 输入框获得焦点时按 Enter 直接翻译，Shift+Enter 换行。
  */
 @Composable
 fun SourceCard(
@@ -36,6 +44,7 @@ fun SourceCard(
     onTextChange: (String) -> Unit,
     onLanguageSelected: (Language) -> Unit,
     onClear: () -> Unit,
+    onSubmit: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     GlassCard(modifier = modifier) {
@@ -63,7 +72,18 @@ fun SourceCard(
             onValueChange = onTextChange,
             modifier = Modifier
                 .fillMaxWidth()
-                .heightIn(min = 168.dp),
+                .heightIn(min = 168.dp)
+                .onPreviewKeyEvent { event ->
+                    if (event.type == KeyEventType.KeyDown &&
+                        event.key == Key.Enter &&
+                        !event.isShiftPressed
+                    ) {
+                        onSubmit()
+                        true
+                    } else {
+                        false
+                    }
+                },
             textStyle = MaterialTheme.typography.bodyLarge.copy(
                 fontSize = 18.sp,
                 lineHeight = 29.sp,
@@ -74,7 +94,7 @@ fun SourceCard(
                 Box(modifier = Modifier.fillMaxWidth().fillMaxHeight()) {
                     if (text.isEmpty()) {
                         Text(
-                            text = "把要翻译的句子粘进来，或者直接开始打字…",
+                            text = "さあ、私たちのデートを始めましょう!",
                             style = MaterialTheme.typography.bodyMedium,
                             color = LingoColors.TextMuted,
                         )
@@ -98,6 +118,11 @@ fun SourceCard(
                 )
             }
             Spacer(Modifier.weight(1f))
+            Text(
+                text = "Enter 翻译",
+                style = MaterialTheme.typography.labelSmall,
+                color = LingoColors.TextMuted,
+            )
             Text(
                 text = "${text.length} 字",
                 style = MaterialTheme.typography.labelSmall,
