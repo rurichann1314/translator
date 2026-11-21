@@ -39,8 +39,8 @@ fun AppHeader(
     ) {
         Box(
             modifier = Modifier
-                .size(46.dp)
-                .clip(RoundedCornerShape(15.dp))
+                .size(60.dp)
+                .clip(RoundedCornerShape(size = 16.dp))
                 .background(
                     Brush.linearGradient(listOf(LingoColors.AccentStart, LingoColors.AccentEnd)),
                 ),
