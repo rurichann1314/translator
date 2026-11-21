@@ -19,7 +19,7 @@ kotlin {
                 outputFileName = "lingo.js"
                 devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
                     port = 8080
-                    open = false
+                    open = true
                 }
             }
         }

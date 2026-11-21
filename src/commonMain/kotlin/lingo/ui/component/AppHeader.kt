@@ -47,7 +47,7 @@ fun AppHeader(
             contentAlignment = Alignment.Center,
         ) {
             Text(
-                text = "言",
+                text = "Hello!",
                 style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
                 color = Color(0xFF0A0E1A),
             )
@@ -57,7 +57,7 @@ fun AppHeader(
 
         Column {
             Text(
-                text = "言叶",
+                text = "ここから",
                 style = MaterialTheme.typography.headlineLarge.copy(
                     brush = Brush.horizontalGradient(
                         listOf(LingoColors.TextPrimary, LingoColors.AccentEnd),
@@ -66,7 +66,7 @@ fun AppHeader(
                 ),
             )
             Text(
-                text = "Lingo · Kotlin/Wasm 翻译器",
+                text = "This is my translator",
                 style = MaterialTheme.typography.labelMedium,
                 color = LingoColors.TextMuted,
             )
